@@ -31,3 +31,5 @@ _Backend_
 
 * Python
 * Flask
+
+Infine, lo script in python update_votes si occuperà di aggiornare regolarmente i files riguardanti la media voti di ogni NIL e il geojson della mappa.
