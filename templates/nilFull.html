@@ -257,6 +257,10 @@
      
      var nil = '';
      var id_nil = -1;
+     var set1 = false;
+     var set2 = false;
+     var set3 = false;
+     var set4 = false;
 
     /*** BACKGROUND SHADES **/
      const colors = ['FF0000','FF3300','FF6600','FF9900','FFCC00','FFFF00','AAFF00','99FF00','66FF00','33FF00','00FF00'];
@@ -553,10 +557,16 @@
            $('#preset4').text('[Media voti: ' +  $("#rateit4").rateit('value') + ']');
 
            //HOVER
-           $("#rateit1").bind('over', function (event,value) { $(this).attr('title', value); });
-           $("#rateit2").bind('over', function (event,value) { $(this).attr('title', value); });
-           $("#rateit3").bind('over', function (event,value) { $(this).attr('title', value); });
-           $("#rateit4").bind('over', function (event,value) { $(this).attr('title', value); });
+           $("#rateit1").on('over', function (event,value) { $(this).attr('title', value); });
+           $("#rateit2").on('over', function (event,value) { $(this).attr('title', value); });
+           $("#rateit3").on('over', function (event,value) { $(this).attr('title', value); });
+           $("#rateit4").on('over', function (event,value) { $(this).attr('title', value); });
+
+           //CLICK
+           $("#rateit1").on('click', function () { set1 = true; });
+           $("#rateit2").on('click', function () { set2 = true; });
+           $("#rateit3").on('click', function () { set3 = true; });
+           $("#rateit4").on('click', function () { set4 = true; });
 
            //VOTE
            $("#rateit1").on('rated', function (event, value) { $('#value1').css('color', 'red').text('Tuo voto: ' +  $("#rateit1").rateit('value') + ''); });
@@ -570,8 +580,11 @@
            $("#rateit3").on('reset', function (event, value) { $('#value3').css('color', 'red').text('Tuo voto: ' +  $("#rateit3").rateit('value') + ''); });
            $("#rateit4").on('reset', function (event, value) { $('#value4').css('color', 'red').text('Tuo voto: ' +  $("#rateit4").rateit('value') + ''); });
 
-            
         });
+	set1 = false;
+        set2 = false;
+        set3 = false;
+        set4 = false;
       });
 
 
@@ -581,44 +594,48 @@
            console.log("R2: " + $("#rateit2").rateit('value'));
            console.log("R3: " + $("#rateit3").rateit('value'));
            console.log("R4: " + $("#rateit4").rateit('value'));
-            
 
-           $.getJSON('https://api.ipify.org?format=jsonp&callback=?').success(function(data) {
-                 var o = JSON.parse(JSON.stringify(data, null, 2));
-                 console.log(o.ip);
-                 console.log(id_nil, nil);
-                 $.ajax({
-                   url : "http://localhost:8080/vote",
-                   data: { 'v1' :  $("#rateit1").rateit('value'),
-                           'v2' :  $("#rateit2").rateit('value'),
-                           'v3' :  $("#rateit3").rateit('value'),
-                           'v4' :  $("#rateit4").rateit('value'),
-                           'nil' :  nil,
-                           'id_nil' : id_nil,
-                           'ip' : o.ip
-                   },
-                   type: 'POST',
-                   success : function (resp,state) {
-                      console.log(resp);
-                      $('#checkOK').html('&#9989;').text();
-                   },
-                   error : function (req,state,error) {
-                      console.log(state)
-                      console.log(error)
-                      if(error == 'FORBIDDEN')
-                         alert("Hai già votato questa zona!")
-                       else
-                         alert("E' avvenuto un errore. Lo stato della chiamata è: "+state);
-                  }
-              });
-           })
-           .error(function() {
-             $('#checkOK').html('&#9888;').text();
-             $('#send').removeClass("btn-success").addClass("btn-danger").text("Errore");
-             alert("ATTENZIONE: Disattiva AdBlock o UBlock dal tuo browser per votare!")
-           });
-         $('#send').attr("disabled", true);
-         $('#send').text("Grazie per aver votato!");
+	   if(!(set1 && set2 && set3 && set4)){
+           	alert("Dai un voto a tutte e 4 le categorie!");
+           }
+           else{
+		   $.getJSON('https://api.ipify.org?format=jsonp&callback=?').success(function(data) {
+			 var o = JSON.parse(JSON.stringify(data, null, 2));
+			 console.log(o.ip);
+			 console.log(id_nil, nil);
+			 $.ajax({
+			   url : "http://localhost:8080/vote",
+			   data: { 'v1' :  $("#rateit1").rateit('value'),
+				   'v2' :  $("#rateit2").rateit('value'),
+				   'v3' :  $("#rateit3").rateit('value'),
+				   'v4' :  $("#rateit4").rateit('value'),
+				   'nil' :  nil,
+				   'id_nil' : id_nil,
+				   'ip' : o.ip
+			   },
+			   type: 'POST',
+			   success : function (resp,state) {
+			      console.log(resp);
+			      $('#checkOK').html('&#9989;').text();
+			   },
+			   error : function (req,state,error) {
+			      console.log(state)
+			      console.log(error)
+			      if(error == 'FORBIDDEN')
+				 alert("Hai già votato questa zona!")
+			       else
+				 alert("E' avvenuto un errore. Lo stato della chiamata è: "+state);
+			  }
+		      });
+		   })
+		   .error(function() {
+		     $('#checkOK').html('&#9888;').text();
+		     $('#send').removeClass("btn-success").addClass("btn-danger").text("Errore");
+		     alert("ATTENZIONE: Disattiva AdBlock o UBlock dal tuo browser per votare!")
+		   });
+		 $('#send').attr("disabled", true);
+		 $('#send').text("Grazie per aver votato!");
+	   }
          });
       });
        
