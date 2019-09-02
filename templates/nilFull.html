@@ -219,10 +219,13 @@
       <br/>
       <div class="container">
         <div class="row">
-            <div class="col text-center">
+          <div class="col text-center">
               <button id="send" class="btn btn-success btn-lg">INVIA VOTI</button><span id="checkOK"></span>
-            </div>
           </div>
+	  <div class="col text-center">
+              <div id="okmsg"></div>
+          </div>	
+        </div>
       </div>
     </div>  
     <br/>
@@ -631,10 +634,11 @@
 		   .error(function() {
 		     $('#checkOK').html('&#9888;').text();
 		     $('#send').removeClass("btn-success").addClass("btn-danger").text("Errore");
-		     alert("ATTENZIONE: Disattiva AdBlock o UBlock dal tuo browser per votare!")
+		     alert("ATTENZIONE: Disattiva AdBlock o UBlock dal tuo browser per votare!");
 		   });
 		 $('#send').attr("disabled", true);
 		 $('#send').text("Grazie per aver votato!");
+		 $('#okmsg').text("Il tuo contributo verrà aggiunto sulla mappa entro 5 minuti!");
 	   }
          });
       });
