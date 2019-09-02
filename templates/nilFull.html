@@ -504,12 +504,18 @@
         $('#container1').show();
         $('#send').attr("disabled", false);
         $('#checkOK').text('');
-        $('#send').text("INVIA VOTO");
         $('#p1').hide();
         $('#p2').hide();
         $('#p3').hide();
         $('#p4').hide();
 
+	      
+	if($('#send').hasClass("btn-danger"))
+          $('#send').removeClass("btn-danger").addClass("btn-success").text("INVIA VOTI");
+        else
+          $('#send').addClass("btn-success").text("INVIA VOTI");
+        
+	
         $('html, body').animate({
             scrollTop: $("#container1").offset().top
         }, 1000);
@@ -620,14 +626,20 @@
 			   success : function (resp,state) {
 			      console.log(resp);
 			      $('#checkOK').html('&#9989;').text();
+			      $('#okmsg').text("Il tuo contributo verrà aggiunto sulla mappa entro 5 minuti!");
 			   },
 			   error : function (req,state,error) {
 			      console.log(state)
-			      console.log(error)
-			      if(error == 'FORBIDDEN')
-				 alert("Hai già votato questa zona!")
-			       else
-				 alert("E' avvenuto un errore. Lo stato della chiamata è: "+state);
+           	              console.log(error)
+           	              if(error == 'FORBIDDEN'){
+           	                alert("Hai già votato questa zona!");
+                                $('#okmsg').text("Hai già votato questa zona!");
+                              }
+           	              else{
+           	                alert("E' avvenuto un errore. Lo stato della chiamata è: "+state);
+                              }
+                              $('#checkOK').html('&#9888;').text();
+                              $('#send').removeClass("btn-success").addClass("btn-danger").text("Errore");
 			  }
 		      });
 		   })
@@ -635,10 +647,10 @@
 		     $('#checkOK').html('&#9888;').text();
 		     $('#send').removeClass("btn-success").addClass("btn-danger").text("Errore");
 		     alert("ATTENZIONE: Disattiva AdBlock o UBlock dal tuo browser per votare!");
+		     $('#okmsg').text("ATTENZIONE: Disattiva AdBlock o UBlock dal tuo browser per votare!");
 		   });
 		 $('#send').attr("disabled", true);
 		 $('#send').text("Grazie per aver votato!");
-		 $('#okmsg').text("Il tuo contributo verrà aggiunto sulla mappa entro 5 minuti!");
 	   }
          });
       });
