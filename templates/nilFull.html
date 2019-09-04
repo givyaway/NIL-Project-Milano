@@ -93,9 +93,9 @@
     <div id="container1" style="display:none;">
       <div class="col-sm-4"></div>
       <div class="col-sm-4">
-        <div class="panel panel-primary bg-success">
-          <div id="info2" class="panel-success bg-light border border-primary">&nbsp;</div>
-          <div id="nvotes" class="panel-text bg-light border border-primary">&nbsp;</div>
+        <div class="panel panel-primary bg-light">
+          <div id="info2" class="panel-success bg-primary border border-primary">&nbsp;</div>
+          <div id="nvotes" class="panel-text bg-primary border border-primary">&nbsp;</div>
         </div>
       </div>
       <div class="col-sm-4"></div>
@@ -105,7 +105,7 @@
      <h3 class="text-center">Valuta i Nuclei di Identità Locale (NIL) che compongono Milano!</h3>
      <p class="panel-text">Fai click su uno dei NIL della mappa e valuta la zona selezionata su 4 categorie:</p>
        <ol>
-         <li>Rapporto qualità zona / costo immobili</li>
+         <li>Rapporto qualità zona / prezzo immobili</li>
          <li>Servizi disponibili, clima e ambiente</li>
          <li>Cultura e tempo libero</li>
          <li>Sicurezza e vivibilità della zona</li>
@@ -115,27 +115,33 @@
       <br>
     </div>
     <div class="box" id="box1" style="display:none;" >
-      <h3 class="text-center" id="t1"><a href="#p1">1 - Rapporto qualità della zona / costo degli immobili</a></h3>
+      <h3 class="text-center" id="t1"><a href="#p1">1 - Rapporto qualità della zona / prezzo degli immobili</a></h3>
       <div class="container">
         <div class="col-sm">
           <div class="panel panel-default">
             <div class="panel-body text-center">
               <div class="panel-text" id="p1" style="display:none;">
                 <font size="2">
-                  <p class="panel-text">Indicatore del rapporto tra la qualità della vita offerta dalla zona rispetto al costo necessario a viverci.<br>
+                  <p class="panel-text">Indica il rapporto tra la qualità della vita offerta dalla zona e il costo necessario a viverci.<br>
                   In questo parametro è da considerare il costo relativo sia ad appartamenti in affitto che a locazioni in vendita sulla base del prezzo del mattone.<br>
-                  Valori bassi indicano un costo da sostenere elevato rispetto a ciò che offre la zona, mentre valori alti indicano un costo conveniente rispetto alla zona. </p>
+                  Voti bassi indicano prezzi degli immobili troppo elevati rispetto alla zona. Al contrario, voti alti implicano prezzi convenienti in zona. </p>
                 </font>
+              </div>
+              <div class="row justify-content-md-center">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                  <div class="rateit" id="rateit1"  data-rateit-mode="font"  style="font-size:50px" ></div>
+                </div>
+                <div class="col-sm-4"></div>
               </div>
               <div class="row justify-content-md-center">
                 <div class="col-sm-4">
                 </div>
                 <div class="col-sm-4">
-                  <div class="rateit" id="rateit1"  data-rateit-mode="font"  style="font-size:50px" ></div>
-                </div>
-                <div class="col-sm-2">
                   <div id="preset1" style="font-size:14px"></div>
                   <div id="value1" style="font-size:14px"></div>
+                </div>
+                <div class="col-sm-4">
                 </div>
               </div>
             </div>
@@ -159,10 +165,15 @@
                 <div class="col-sm-4">
                   <div class="rateit" id="rateit2"  data-rateit-mode="font"  style="font-size:50px" ></div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4"></div>
+              </div>
+              <div class="row justify-content-md-center">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
                   <div id="preset2" style="font-size:14px"></div>
                   <div id="value2" style="font-size:14px"></div>
                 </div>
+                <div class="col-sm-4"></div>
               </div>
             </div>  
           </div>
@@ -176,7 +187,7 @@
             <div class="panel-body text-center">
               <div class="panel-text"  id="p3" style="display:none;">
                 <font size="2">
-                  <p class="panel-text">Presenza di librerie, aule studio, sale cinematografiche, spettacoli teatrali, concerti e altri eventi sociali cui partecipare, ma anche pub, locali, ristoranti e altri luoghi di ritrovo.</p>
+                  <p class="panel-text">Presenza di scuole, librerie, palestre, sale cinematografiche, spettacoli teatrali, concerti e altri eventi sociali cui partecipare, ma anche pub, locali, ristoranti e altri luoghi di ritrovo.</p>
                 <font size="2">
               </div>
               <div class="row justify-content-md-center">
@@ -184,10 +195,15 @@
                 <div class="col-sm-4">
                   <div class="rateit" id="rateit3"  data-rateit-mode="font"  style="font-size:50px" ></div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4"></div>
+              </div>
+              <div class="row justify-content-md-center">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
                   <div id="preset3" style="font-size:14px"></div>
                   <div id="value3" style="font-size:14px"></div>
                 </div>
+                <div class="col-sm-4"></div>
               </div>
             </div>
           </div>
@@ -208,10 +224,15 @@
                 <div class="col-sm-4">
                   <div class="rateit" id="rateit4"  data-rateit-mode="font"  style="font-size:50px" ></div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4"></div>
+              </div>
+              <div class="row justify-content-md-center">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
                   <div id="preset4" style="font-size:14px"></div>
                   <div id="value4" style="font-size:14px"></div>
                 </div>
+                <div class="col-sm-4"></div>
               </div>
             </div>
           </div>
@@ -221,11 +242,11 @@
       <div class="container">
         <div class="row">
           <div class="col text-center">
-              <button id="send" class="btn btn-success btn-lg">INVIA VOTI</button><span id="checkOK"></span>
+            <button id="send" class="btn btn-success btn-lg">INVIA VOTI</button><span id="checkOK"></span>
           </div>
-	  <div class="col text-center">
-              <div id="okmsg"></div>
-          </div>	
+          <div class="col text-center">
+            <div id="okmsg"></div>
+          </div>
         </div>
       </div>
     </div>  
