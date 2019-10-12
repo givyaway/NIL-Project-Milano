@@ -261,8 +261,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.rateit/1.1.2/rateit.css">
 	  <!-- <link href="{{ url_for('static', filename='css/rateit.css') }}" rel="stylesheet" type="text/css"> -->
     <!-- <link href="{{ url_for('static', filename='css/nil3.css') }}" rel="stylesheet" type="text/css"> -->
-    <script type="module">
+    <link rel="stylesheet" type="text/css" href="css/jquery-eu-cookie-law-popup.css"/>
+    <script src="js/jquery-eu-cookie-law-popup.js"></script>
 
+    <script type="module">
+	
+	$(document).euCookieLawPopup().init({
+	  cookiePolicyUrl : 'https://old.reddit.com/r/milano/comments/d074xf',
+	  popupPosition : 'fixedtop',
+	  colorStyle : 'default',
+	  compactStyle : false,
+	  popupTitle : 'Questo sito web fa uso del tuo indirizzo IP in fase di votazione!',
+	  popupText : "L'unica informazione richiesta ai partecipanti al voto è l'indirizzo IP assegnato dal provider internet al vostro PC o smartphone. Nessun altro dato sarà memorizzato su questo sito. Gli indirizzi IP serviranno solo a gestire l'operatività del progetto. Essi dunque, NON saranno comunicati, ceduti o venduti a terzi. Se reputi questo dato troppo sensibile alla causa, invito l'utente a non inviare il proprio voto.",
+	  buttonContinueTitle : 'Continua',
+	  buttonLearnmoreTitle : 'Ulteriori Informazioni',
+	  buttonLearnmoreOpenInNewWindow : false,
+	  agreementExpiresInDays : 30,
+	  autoAcceptCookiePolicy : false,
+	  htmlMarkup : null
+	});
+	   
       // CONVERT imports to var
      var Map                 = ol.Map;        //~ import Map from 'ol/Map.js';
      var View                = ol.View;       //~ import View from 'ol/View.js';
