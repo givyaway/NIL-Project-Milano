@@ -26,6 +26,7 @@ _Frontend_
 * JQuery
 * Openlayers
 * Rateit.js
+* jquery-eu-cookie-law-popup.js
 
 _Backend_
 
